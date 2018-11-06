@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:44:24 by nselaule          #+#    #+#             */
-/*   Updated: 2018/09/27 18:13:07 by nselaule         ###   ########.fr       */
+/*   Updated: 2018/11/06 10:05:05 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void			check_dirs2(t_flags *flags, t_files *dirs, int x, int first)
 	DIR			*dir;
 	int			i;
 	t_files		*files;
+	t_files		*tmp;
 
 	files = NULL;
 	i = 1;
@@ -111,11 +112,35 @@ void			check_dirs2(t_flags *flags, t_files *dirs, int x, int first)
 		closedir(dir);
 		if (files)
 		{
+			/*tmp = files;
+			while (tmp)
+			{
+				free(tmp->name);
+				free(tmp->path);
+				free(tmp->rights);
+				free(tmp->uname);
+				free(tmp->gname);
+				free(tmp->lnpath);
+				free(tmp);
+				tmp = tmp->next;
+			}*/
 			first = dir_newline(first, dirs, x);
 			output(flags, files, 1);
 		}
 		i = 1;
-		files = NULL;
+		tmp = files;
+		while (tmp)
+		{
+			free(tmp->name);
+			free(tmp->path);
+			free(tmp->rights);
+			free(tmp->uname);
+			free(tmp->gname);
+			free(tmp->lnpath);
+			free(tmp);
+			tmp = tmp->next;
+		}
+		//files = NULL;
 		dirs = dirs->next;
 	}
 }

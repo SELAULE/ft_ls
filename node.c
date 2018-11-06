@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:44:34 by nselaule          #+#    #+#             */
-/*   Updated: 2018/09/27 17:47:01 by nselaule         ###   ########.fr       */
+/*   Updated: 2018/11/06 09:50:40 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void				ft_node(t_files *entry)
 	{
 		if ((i = readlink(entry->path, buf, sizeof(buf) - 1)) != -1)
 			buf[i] = '\0';
+		free(entry->lnpath);
 		entry->lnpath = ft_strdup(buf);
 	}
 	major_minor(entry);

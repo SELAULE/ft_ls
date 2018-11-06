@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:46:08 by nselaule          #+#    #+#             */
-/*   Updated: 2018/09/22 13:46:11 by nselaule         ###   ########.fr       */
+/*   Updated: 2018/11/06 10:05:50 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void		recur(t_flags *flags, t_files *files)
 	while (cur)
 	{
 		if (cur->name && cur->path && S_ISDIR(cur->st_mode)
-			&& ft_strcmp(".", cur->name) && ft_strcmp("..", cur->name)
-			&& !(flags->a == 0 && cur->name[0] == '.'))
+				&& ft_strcmp(".", cur->name) && ft_strcmp("..", cur->name)
+				&& !(flags->a == 0 && cur->name[0] == '.'))
 		{
 			ft_putchar('\n');
 			recur2(flags, cur->path);
@@ -36,6 +36,7 @@ void		recur2(t_flags *flags, char *path)
 	char	*tab;
 	DIR		*dir;
 	t_files	*file;
+	t_files *tmp;
 
 	file = NULL;
 	i = 1;
@@ -47,20 +48,47 @@ void		recur2(t_flags *flags, char *path)
 		{
 			tab = ft_strjoin(path, "/");
 			i = link_new(&file, readdir(dir), tab);
+			free(tab);
 		}
 		closedir(dir);
 		if (file)
+		{
+			/*tmp = file;
+			while (tmp)
+			{
+				free(tmp->name);
+				free(tmp->path);
+				free(tmp->rights);
+				free(tmp->uname);
+				free(tmp->gname);
+				free(tmp->lnpath);
+				free(tmp);
+				tmp = tmp->next;
+			}*/
 			output(flags, file, 1);
-		file = NULL;
+		}
+		tmp = file;
+		while (tmp)
+		{
+			free(tmp->name);
+			free(tmp->path);
+			free(tmp->rights);
+			free(tmp->uname);
+			free(tmp->gname);
+			free(tmp->lnpath);
+			free(tmp);
+			tmp = tmp->next;
+		}
 	}
 	else
 		perm_dnied(path);
-	free(file);
+	//	free(file);
 }
 
 int			link_new(t_files **file, struct dirent *dir, char *path)
 {
 	t_files	*list;
+	t_files *node;
 
 	list = *file;
 	if (!dir)
@@ -69,7 +97,8 @@ int			link_new(t_files **file, struct dirent *dir, char *path)
 	{
 		while (list->next)
 			list = list->next;
-		list->next = add_node(dir->d_name, path);
+		node = add_node(dir->d_name, path);
+		list->next = node;
 	}
 	else
 		*file = add_node(dir->d_name, path);

@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:53:52 by nselaule          #+#    #+#             */
-/*   Updated: 2018/11/05 16:47:02 by nselaule         ###   ########.fr       */
+/*   Updated: 2018/11/06 09:01:57 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void		permisions(int size, int i, int y)
 		y--;
 		i--;
 	}
+	free(tmp);
 	ft_putstr(num);
+	free(num);
 }
 
 void		print_fill(char *name)

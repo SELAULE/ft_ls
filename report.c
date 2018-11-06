@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 13:56:17 by nselaule          #+#    #+#             */
-/*   Updated: 2018/10/23 13:56:19 by nselaule         ###   ########.fr       */
+/*   Updated: 2018/11/06 09:04:20 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void		perm_dnied(char *str)
 
 void		poster_date(t_files *file)
 {
-	ft_putstr(ft_strndup(&(ctime(&file->ldatamod.tv_sec))[4], 12));
+	char	*str;
+
+	str = ft_strndup(&(ctime(&file->ldatamod.tv_sec))[4], 12);
+	ft_putstr(str);
 	ft_putchar(' ');
+	free(str);
 }
