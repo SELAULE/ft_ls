@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 14:02:46 by nselaule          #+#    #+#             */
-/*   Updated: 2018/11/05 16:47:22 by nselaule         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:42:16 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void			trie_alpha_argv(t_flags *flags)
 	}
 }
 
-static void	free_shit(t_flags *flags)
+static void		free_shit(t_flags *flags)
 {
-	int j;
+	int			j;
 
 	j = -1;
 	while (++j < 100)
@@ -126,6 +126,5 @@ int				main(int argc, char **argv)
 		i = 0;
 	cparams(flags, i, f);
 	free_shit(flags);
-//	sleep(90);
 	return (0);
 }

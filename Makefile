@@ -6,7 +6,7 @@
 #    By: nselaule <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/24 10:17:09 by nselaule          #+#    #+#              #
-#    Updated: 2018/10/23 10:04:58 by nselaule         ###   ########.fr        #
+#    Updated: 2018/11/08 08:24:53 by nselaule         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC		= main.c arg.c check_file.c print.c \
 
 OBJ		= $(SRC:.c=.o)
 
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror -g -ggdb3
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:46:00 by nselaule          #+#    #+#             */
-/*   Updated: 2018/09/23 15:58:12 by nselaule         ###   ########.fr       */
+/*   Updated: 2019/02/15 10:27:53 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void		lsprint(t_flags *flags, t_files *file, int i)
 		}
 		tmp = tmp->next;
 	}
-	//clean_up(&file);
 }
 
 int			check_size(t_flags *flags, t_files *file)

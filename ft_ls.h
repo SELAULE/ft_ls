@@ -6,14 +6,13 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:56:02 by nselaule          #+#    #+#             */
-/*   Updated: 2018/11/06 09:30:53 by nselaule         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:42:39 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef FT_LS_H
 # define FT_LS_H
-//# include <sys/sysmacros.h>
+
 # include <dirent.h>
 # include <sys/stat.h>
 # include <time.h>
@@ -125,5 +124,4 @@ void						illegal_options(char c);
 void						perm_dnied(char *str);
 void						poster_date(t_files *file);
 void						clean_up(t_files **files);
-//void						pls_free_this_shit(t_files **dlist);
 #endif

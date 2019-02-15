@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:46:08 by nselaule          #+#    #+#             */
-/*   Updated: 2018/11/06 10:05:50 by nselaule         ###   ########.fr       */
+/*   Updated: 2019/02/15 10:30:03 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ void		recur2(t_flags *flags, char *path)
 		closedir(dir);
 		if (file)
 		{
-			/*tmp = file;
-			while (tmp)
-			{
-				free(tmp->name);
-				free(tmp->path);
-				free(tmp->rights);
-				free(tmp->uname);
-				free(tmp->gname);
-				free(tmp->lnpath);
-				free(tmp);
-				tmp = tmp->next;
-			}*/
 			output(flags, file, 1);
 		}
 		tmp = file;
@@ -82,7 +70,6 @@ void		recur2(t_flags *flags, char *path)
 	}
 	else
 		perm_dnied(path);
-	//	free(file);
 }
 
 int			link_new(t_files **file, struct dirent *dir, char *path)

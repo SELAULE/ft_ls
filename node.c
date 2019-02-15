@@ -6,7 +6,7 @@
 /*   By: nselaule <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 13:44:34 by nselaule          #+#    #+#             */
-/*   Updated: 2018/11/06 09:50:40 by nselaule         ###   ########.fr       */
+/*   Updated: 2019/02/15 10:27:11 by nselaule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void				ft_node(t_files *entry)
 		entry->lnpath = ft_strdup(buf);
 	}
 	major_minor(entry);
-//	pls_free_this_shit(&entry);
 }
 
 t_files				*add_node(char *name, char *path)
@@ -66,6 +65,9 @@ t_files				*add_node(char *name, char *path)
 	if (lstat(entry->path, &fstat) == -1)
 	{
 		no_directory(entry->name);
+		free(entry->name);
+		free(entry->path);
+		free(entry);
 		return (NULL);
 	}
 	entry->st_mode = fstat.st_mode;
@@ -94,9 +96,9 @@ void				add_file_dir(t_files **files, char *name, char *dir)
 		*files = add_node(name, dir);
 }
 
-void	clean_up(t_files **dlist)
+void				clean_up(t_files **dlist)
 {
-	t_files *ptr;
+	t_files			*ptr;
 
 	ptr = NULL;
 	if ((dlist && *dlist))
@@ -109,9 +111,7 @@ void	clean_up(t_files **dlist)
 			(ptr->name) ? ft_memdel((void*)&ptr->name) : 0;
 			(ptr->gname) ? ft_memdel((void*)&ptr->gname) : 0;
 			(ptr->uname) ? ft_memdel((void*)&ptr->uname) : 0;
-		//	ptr->dname ?ft_memdel((void*)&ptr->dname) : 0;
 			ptr->lnpath ? ft_memdel((void*)&ptr->lnpath) : 0;
-//		ptr->l ? ft_memdel((void*)&ptr->l) : 0;
 			ptr->rights ? ft_memdel((void*)&ptr->rights) : 0;
 			ptr->path ? ft_memdel((void*)&ptr->path) : 0;
 			ptr ? ft_memdel((void*)&ptr) : 0;
