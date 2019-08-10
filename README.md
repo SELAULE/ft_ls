@@ -6,3 +6,5 @@ then run using flags, ./ft_ls -l and other's. I also catered for multiple flags 
 when I use "time ./ft_ls -R /".
 
 Enjoy...
+
+How you run it is easy you just clone and run make.
